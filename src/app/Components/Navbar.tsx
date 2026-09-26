@@ -40,14 +40,14 @@ const Navbar = () => {
 
 
                 <div className="flex md:gap-2 gap-1 mr-2 md:mr-5 lg:mr-0 navbar-end">
-                    <button className="py-1.5 px-2 rounded-md md:py-1.5 md:px-4 md:rounded-lg bg-base-300 text-gray-300  flex items-center md:gap-2 hover:bg-base-200 hover:text-white active:scale-97 transition duration-200">
+                    <button className="py-1.5 px-2 rounded-md md:py-1.5 md:px-4 md:rounded-lg bg-base-300 text-gray-300  flex items-center md:gap-2 hover:bg-base-200 hover:text-white active:scale-96 transition duration-200">
                         <span className="font-medium text-sm md:text-base mr-1 md:mr-0">Plan</span>
                         <span className="w-5 h-5 md:h-6.5 md:w-6.5 text-sm md:text-base rounded-full bg-[#c2f800] text-black font-bold flex items-center justify-center ">
                             0
                         </span>
                     </button>
 
-                    <button className="py-1.5 px-2 rounded-md md:py-1.5 md:px-3 md:rounded-lg bg-base-300 text-gray-300 flex items-center gap-2 hover:bg-base-200 hover:text-white active:scale-97 transition duration-200">
+                    <button className="py-1.5 px-2 rounded-md md:py-1.5 md:px-3 md:rounded-lg bg-base-300 text-gray-300 flex items-center gap-2 hover:bg-base-200 hover:text-white active:scale-96 transition duration-200">
                         <span className="font-medium text-sm md:text-base mr-1 md:mr-0">Saved</span>
                         <span className="w-5 h-5 md:h-6.5 md:w-6.5 text-sm md:text-base rounded-full border md:border-2 border-gray-500 flex items-center justify-center font-bold">
                             0
