@@ -4,7 +4,7 @@ import heroImg from "@/assets/banner.png"
 
 const Banner = () => {
     return (
-        <div className=" md:mt-9 lg:mt-12 mt-6">
+        <div className="px-4 md:px-6 lg:px-0 md:mt-9 lg:mt-12 mt-6">
             <div className=" bg-[#15171d] border-2 rounded-2xl border-[#222630] container mx-auto">
                 <div className="flex-col md:flex lg:flex lg:justify-between md:justify-between md:flex-row-reverse lg:flex-row-reverse">
                     <div className=" lg:p-14 md:py-8 py-5 flex justify-center md:block md:justify-normal">
