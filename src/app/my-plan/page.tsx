@@ -1,6 +1,12 @@
+"use client";
+import { WorkoutContext } from "@/WorkOutContext/WorkOutContext";
+import { useContext } from "react";
 
 
 const MyplanPage = () => {
+
+    const {addToPlan, addToSave} = useContext(WorkoutContext)
+
     return (
         <div className="container mx-auto px-4 md:px-6 lg:px-0">
             <div className="mt-10">
@@ -27,6 +33,7 @@ const MyplanPage = () => {
             <div className="tabs tabs-border mt-8">
                 <input type="radio" name="my_tabs_2" className="tab border border-[#232732] rounded-xl bg-[ #151921]" aria-label="Today's Plan" />
                 <div className="tab-content border-base-300 bg-[#13161d] py-10 md:py-16 lg:py-30 mt-6">
+                    <h1>AADDDDD ::{addToPlan.length}</h1>
                     <h2 className="font-oswald text-center font-bold text-xl text-white uppercase">NOTHING HERE YET</h2>
                     <p className="font-normal text-center px-5 md:px-0 mt-1.5 mb-5 text-xm text-[#a1a1aa]">Browse the library and add a lift to get today moving.</p>
                     <div className="flex justify-center">
@@ -37,6 +44,7 @@ const MyplanPage = () => {
 
                 <input type="radio" name="my_tabs_2" className="tab border border-[#232732] rounded-xl ml-2" aria-label="Saved" defaultChecked />
                 <div className="tab-content border-base-300 bg-[#13161d] py-10 md:py-16 lg:py-30 mt-6">
+                    <h1>saveeee ::{addToPlan.length}</h1>
                     <h2 className="font-oswald text-center font-bold text-xl text-white uppercase">NOTHING HERE YET</h2>
                     <p className="font-normal text-center px-5 md:px-0 mt-1.5 mb-5 text-xm text-[#a1a1aa]">Browse the library and add a lift to get today moving.</p>
                     <div className="flex justify-center">

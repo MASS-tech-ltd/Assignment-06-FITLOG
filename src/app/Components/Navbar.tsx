@@ -24,13 +24,17 @@ const Navbar = () => {
                             {link}
                         </ul>
                     </div>
-                    <Image
-                        src={Logo}
-                        alt="Logo"
-                        width={28}
-                        height={28}
-                    />
-                    <a className="btn btn-ghost text-xl font-oswald">FITLOG</a>
+                    <Link href="/">
+                        <div className="flex">
+                            <Image
+                                src={Logo}
+                                alt="Logo"
+                                width={28}
+                                height={28}
+                            />
+                            <h1 className="font-bold text-xl font-oswald ml-3">FITLOG</h1>
+                        </div>
+                    </Link>
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1">
@@ -40,19 +44,23 @@ const Navbar = () => {
 
 
                 <div className="flex md:gap-2 gap-1 mr-2 md:mr-5 lg:mr-0 navbar-end">
-                    <button className="py-1.5 px-2 rounded-md md:py-1.5 md:px-4 md:rounded-lg bg-base-300 text-gray-300  flex items-center md:gap-2 hover:bg-base-200 hover:text-white active:scale-96 transition duration-200">
-                        <span className="font-medium text-sm md:text-base mr-1 md:mr-0">Plan</span>
-                        <span className="w-5 h-5 md:h-6.5 md:w-6.5 text-sm md:text-base rounded-full bg-[#c2f800] text-black font-bold flex items-center justify-center ">
-                            0
-                        </span>
-                    </button>
+                    <Link href="/my-plan">
+                        <button className="py-1.5 px-2 rounded-md md:py-1.5 md:px-4 md:rounded-lg bg-base-300 text-gray-300  flex items-center md:gap-2 hover:bg-base-200 hover:text-white active:scale-96 transition duration-200">
+                            <span className="font-medium text-sm md:text-base mr-1 md:mr-0">Plan</span>
+                            <span className="w-5 h-5 md:h-6.5 md:w-6.5 text-sm md:text-base rounded-full bg-[#c2f800] text-black font-bold flex items-center justify-center ">
+                                0
+                            </span>
+                        </button>
+                    </Link>
 
-                    <button className="py-1.5 px-2 rounded-md md:py-1.5 md:px-3 md:rounded-lg bg-base-300 text-gray-300 flex items-center gap-2 hover:bg-base-200 hover:text-white active:scale-96 transition duration-200">
-                        <span className="font-medium text-sm md:text-base mr-1 md:mr-0">Saved</span>
-                        <span className="w-5 h-5 md:h-6.5 md:w-6.5 text-sm md:text-base rounded-full border md:border-2 border-gray-500 flex items-center justify-center font-bold">
-                            0
-                        </span>
-                    </button>
+                    <Link href="/my-plan">
+                        <button className="py-1.5 px-2 rounded-md md:py-1.5 md:px-3 md:rounded-lg bg-base-300 text-gray-300 flex items-center gap-2 hover:bg-base-200 hover:text-white active:scale-96 transition duration-200">
+                            <span className="font-medium text-sm md:text-base mr-1 md:mr-0">Saved</span>
+                            <span className="w-5 h-5 md:h-6.5 md:w-6.5 text-sm md:text-base rounded-full border md:border-2 border-gray-500 flex items-center justify-center font-bold">
+                                0
+                            </span>
+                        </button>
+                    </Link>
                 </div>
 
             </div>

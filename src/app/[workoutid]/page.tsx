@@ -1,7 +1,8 @@
 import Image from "next/image";
 import { workOutdatatype } from "../type";
-import { LuCalendarPlus2 } from "react-icons/lu";
-import { FaRegBookmark } from "react-icons/fa6";
+
+import AddToButton from "../Components/WorkoutDetails/AddToButton";
+import SaveToLaterButton from "../Components/WorkoutDetails/SaveToLaterButton";
 
 interface WorkOutDetailsPagePropsType {
     params: Promise<{
@@ -92,10 +93,8 @@ const WorkOutDetailsPage = async ({ params }: WorkOutDetailsPagePropsType) => {
                     </div>
 
                     <div className="flex flex-col md:flex-row">
-                        <button className="btn mb-4 md:mb-0 w-full md:w-auto px-6 border-0 
-                        text-base font-bold text-black rounded-md bg-lime-400"
-                        ><span><LuCalendarPlus2 /></span> Add to today&apos;s plan</button>
-                        <button className="w-full md:w-auto text-base font-bold text-[ #e5e7eb] btn btn-outline px-6 w-auto md:ml-5"><span><FaRegBookmark /></span> Save for later</button>
+                        <AddToButton data={data}></AddToButton>
+                        <SaveToLaterButton data={data}></SaveToLaterButton>
                     </div>
                 </div>
             </div>
