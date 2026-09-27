@@ -33,7 +33,7 @@ const WorkoutCard = ({ data }: WorkoutCardPropsType) => {
                             </div>
                         ))}
                     </div>
-                    <h2 className="card-title font-bold font-oswald text-3xl text-white uppercase mt-2">
+                    <h2 className="card-title font-bold font-oswald text-[26px] text-white uppercase mt-2">
                         {data.name}
                     </h2>
                     <p className="font-normal text-base text-gray-400 pb-2">{data.equipment}</p>
