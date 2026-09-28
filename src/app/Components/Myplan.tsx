@@ -1,59 +1,90 @@
-
 import Image from "next/image";
 import { workOutdatatype } from "../type";
 import { FaRegClock } from "react-icons/fa6";
 import { FaFire } from "react-icons/fa";
 import { FaRegStar } from "react-icons/fa";
-import { FaCheck } from "react-icons/fa";
-import { FaXmark } from "react-icons/fa6";
+import Link from "next/link";
+import MarkAsDoneButton from "./WorkoutDetails/MarkAsDoneButton";
+import CrossDeleteButton from "./WorkoutDetails/CrossDeleteButton";
 
 interface MyPlanPropsType {
-    plan: workOutdatatype
+    plan: workOutdatatype;
 }
 
 const Myplan = ({ plan }: MyPlanPropsType) => {
     return (
         <div>
-            <div className="card card-side border border-[#232732] rounded-2xl bg-[#181b23] shadow-sm p-2.5 mx-6">
-                <figure className="rounded-xl">
+            <div className="flex flex-col md:flex-row border border-[#232732] rounded-2xl bg-[#181b23] my-4 md:my-0 shadow-sm p-2.5 mx-4 md:mx-6">
+
+                <div className="flex justify-center pt-2.5 pb-3 md:pt-0 md:pb-0">
                     <Image
+                        className="md:rounded-xl rounded-xl md:w-30 w-75"
                         src={plan.image}
                         alt="Photo"
-                        width={100}
-                        height={50}
+                        width={120}
+                        height={10}
                     />
-                </figure>
+                </div>
 
+                <div className="flex flex-col md:flex-row justify-between md:w-full">
 
-                <div className="flex justify-between w-full">
-                    <div className="mt-4 ml-5">
-                        <h2 className="card-title font-oswald font-bold text-xl uppercase text-white">{plan.name}</h2>
-                        <p className="font-semibold text-sm text-[#8a92a0] mt-1 mb-3">{plan.equipment}</p>
+                    <div className="mt-3 ml-5">
+                        <h2 className="font-oswald font-bold text-xl uppercase text-white">
+                            {plan.name}
+                        </h2>
+
+                        <p className="font-semibold text-sm text-[#8a92a0] mt-1 mb-3">
+                            {plan.equipment}
+                        </p>
+
                         <div className="flex items-center flex-wrap">
+
                             <div className="flex items-center">
-                                <FaRegClock className="font-normal text-base text-[#c2f800]" />
-                                <h5 className="font-normal text-base text-gray-400 ml-1.5">{plan.duration}</h5>
+                                <FaRegClock className="font-normal text-xm md:text-base text-[#c2f800]" />
+                                <h5 className="font-normal text-xm md:text-base text-gray-400 ml-1.5">
+                                    {plan.duration}
+                                </h5>
                             </div>
+
                             <div className="flex items-center mx-6">
-                                <FaFire className="font-normal text-base text-[#c2f800]" />
-                                <h5 className="font-normal text-base text-gray-400 ml-1.5">{plan.caloriesBurned} Kcal</h5>
+                                <FaFire className="font-normal text-xm md:text-base text-[#c2f800]" />
+                                <h5 className="font-normal text-xm md:text-base text-gray-400 ml-1.5">
+                                    {plan.caloriesBurned} Kcal
+                                </h5>
                             </div>
+
                             <div className="flex items-center">
-                                <FaRegStar className="font-normal text-base text-[#c2f800]" />
-                                <h5 className="font-normal text-base text-gray-400 ml-1.5">{plan.rating}</h5>
+                                <FaRegStar className="font-normal text-xm md:text-base text-[#c2f800]" />
+                                <h5 className="font-normal text-xm md:text-base text-gray-400 ml-1.5">
+                                    {plan.rating}
+                                </h5>
                             </div>
+
                         </div>
                     </div>
-                    <div className="flex items-center md:mr-4">
-                        <button
-                            className="w-full md:w-auto text-base font-bold text-[ #e5e7eb] rounded-3xl btn btn-outline px-6 w-auto mr-3"
-                        >
-                            <span></span>View Details</button>
 
+                    <div className="flex justify-center items-center md:mr-4 my-5 md:my-0">
 
-                        <button className="btn btn-primary border-0 
-                        text-xm font-bold text-black rounded-3xl bg-lime-400 mr-3"><span><FaCheck /></span> Mark as Done</button>
-                        <span className="text-[#6b7280] text-2xl"><FaXmark /></span>
+                        <div className="flex lg:flex-row md:flex-col lg:md:space-y-0 md:space-y-2.5 items-center">
+
+                            <Link href={`/${plan.id}`}>
+                                <button
+                                    className="px-4 py-2 border border-[#c2f800] md:btn md:btn-outline md:w-auto md:text-base text-[10px] md:font-bold font-semibold text-[#e5e7eb] rounded-3xl md:px-6 md:mr-3"
+                                >
+                                    View Details
+                                </button>
+                            </Link>
+
+                            <MarkAsDoneButton
+                                workout={plan}
+                            />
+
+                        </div>
+
+                        <CrossDeleteButton
+                            workout={plan}
+                            type="plan"
+                        />
 
                     </div>
                 </div>

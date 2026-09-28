@@ -2,12 +2,25 @@
 
 import { WorkoutContext } from "@/WorkOutContext/WorkOutContext";
 import { useContext } from "react";
-import { workOutdatatype } from "../type";
 import Myplan from "../Components/Myplan";
 import SavedCards from "../Components/SavedCard";
+import Link from "next/link";
+import { useState } from "react";
 
 const MyplanPage = () => {
     const { addToPlan, addToSave } = useContext(WorkoutContext);
+    const [activeTab, setActiveTab] = useState<"plan" | "saved">("plan");
+    const activeData = activeTab === "plan" ? addToPlan : addToSave;
+
+    const totalMinutes = activeData.reduce(
+        (total, workout) => total + workout.duration,
+        0
+    );
+
+    const totalCalories = activeData.reduce(
+        (total, workout) => total + workout.caloriesBurned,
+        0
+    );
 
     return (
         <div className="container mx-auto px-4 md:px-6 lg:px-0">
@@ -24,28 +37,28 @@ const MyplanPage = () => {
                     <div className="py-8 flex justify-around">
                         <div className="text-center">
                             <p className="font-normal text-sm text-[#8a92a0]">
-                                Experience
+                                Exercises
                             </p>
                             <h1 className="font-oswald font-bold text-4xl text-[#c2f800]">
-                                0
+                                {addToPlan.length}
                             </h1>
                         </div>
 
                         <div className="text-center">
                             <p className="font-normal text-sm text-[#8a92a0]">
-                                Experience
+                                Minutes
                             </p>
                             <h1 className="font-oswald font-bold text-4xl text-white">
-                                0
+                                {totalMinutes}
                             </h1>
                         </div>
 
                         <div className="text-center">
                             <p className="font-normal text-sm text-[#8a92a0]">
-                                Experience
+                                Calories
                             </p>
                             <h1 className="font-oswald font-bold text-4xl text-white">
-                                0
+                                {totalCalories}
                             </h1>
                         </div>
                     </div>
@@ -59,9 +72,11 @@ const MyplanPage = () => {
                     name="my_tabs_2"
                     className="tab border border-[#232732] rounded-xl bg-[#151921]"
                     aria-label="Today's Plan"
+                    defaultChecked
+                    onChange={() => setActiveTab("plan")}
                 />
 
-                <div className="tab-content border-base-300 bg-[#13161d] md:py-6 mt-6 space-y-3">
+                <div className="tab-content rounded-2xl border-base-300 bg-[#13161d] md:py-6 mt-6 space-y-3">
                     {addToPlan.length > 0 ? (
                         addToPlan.map((plan) => (
                             <Myplan
@@ -80,9 +95,11 @@ const MyplanPage = () => {
                             </p>
 
                             <div className="flex justify-center">
-                                <button className="btn btn-primary border-0 text-sm font-bold text-black rounded-3xl bg-lime-400">
-                                    Go to workouts
-                                </button>
+                                <Link href={"/"}>
+                                    <button className="btn btn-primary border-0 text-sm font-bold text-black rounded-3xl bg-lime-400">
+                                        Go to workouts
+                                    </button>
+                                </Link>
                             </div>
                         </>
                     )}
@@ -91,12 +108,13 @@ const MyplanPage = () => {
                 <input
                     type="radio"
                     name="my_tabs_2"
-                    className="tab border border-[#232732] rounded-xl ml-2"
+                    className="tab border border-[#232732] bg-[#151921] rounded-xl ml-2"
                     aria-label="Saved"
-                    defaultChecked
+                    onChange={() => setActiveTab("saved")}
+                    
                 />
 
-                <div className="tab-content border-base-300 bg-[#13161d] md:py-6 mt-6 space-y-3">
+                <div className="tab-content rounded-2xl border-base-300 bg-[#13161d] md:py-6 mt-6 space-y-3">
 
                     {addToSave.length > 0 ? (
                         addToSave.map((saved) => (
@@ -116,9 +134,11 @@ const MyplanPage = () => {
                             </p>
 
                             <div className="flex justify-center">
-                                <button className="btn btn-primary border-0 text-sm font-bold text-black rounded-3xl bg-lime-400">
-                                    Go to workouts
-                                </button>
+                                <Link href={"/"}>
+                                    <button className="btn btn-primary border-0 text-sm font-bold text-black rounded-3xl bg-lime-400">
+                                        Go to workouts
+                                    </button>
+                                </Link>
                             </div>
                         </>
                     )}
