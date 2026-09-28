@@ -6,11 +6,13 @@ import Myplan from "../Components/Myplan";
 import SavedCards from "../Components/SavedCard";
 import Link from "next/link";
 import { useState } from "react";
+import { workOutdatatype } from "../type";
 
 const MyplanPage = () => {
     const { addToPlan, addToSave } = useContext(WorkoutContext);
     const [activeTab, setActiveTab] = useState<"plan" | "saved">("plan");
     const activeData = activeTab === "plan" ? addToPlan : addToSave;
+    const [sortBy, setShortBy] = useState<"rating" | "duration" | "calories">("rating")
 
     const totalMinutes = activeData.reduce(
         (total, workout) => total + workout.duration,
@@ -21,7 +23,23 @@ const MyplanPage = () => {
         (total, workout) => total + workout.caloriesBurned,
         0
     );
+    const sortWorkOuts = (workOut: workOutdatatype[]) => {
+        const sortedWorkOut = [...workOut]
+        if (sortBy === "rating") {
+            sortedWorkOut.sort((a, b) => b.rating - a.rating)
+        }
+        if (sortBy === "duration") {
+            sortedWorkOut.sort((a, b) => b.duration - a.duration)
+        }
+        if (sortBy === "calories") {
+            sortedWorkOut.sort((a, b) => b.caloriesBurned - a.caloriesBurned)
+        }
+        return sortedWorkOut;
+    }
 
+
+    const sortedMyPlans = sortWorkOuts(addToPlan)
+    const sortedSaved = sortWorkOuts(addToSave)
     return (
         <div className="container mx-auto px-4 md:px-6 lg:px-0">
             <div className="mt-10">
@@ -76,9 +94,9 @@ const MyplanPage = () => {
                     onChange={() => setActiveTab("plan")}
                 />
 
-                <div className="tab-content rounded-2xl border-base-300 bg-[#13161d] md:py-6 mt-6 space-y-3">
+                <div className="tab-content rounded-2xl border-base-300 bg-[#13161d] md:py-6 py-6 mt-6 space-y-3">
                     {addToPlan.length > 0 ? (
-                        addToPlan.map((plan) => (
+                        sortedMyPlans.map((plan) => (
                             <Myplan
                                 key={plan.id}
                                 plan={plan}
@@ -111,13 +129,14 @@ const MyplanPage = () => {
                     className="tab border border-[#232732] bg-[#151921] rounded-xl ml-2"
                     aria-label="Saved"
                     onChange={() => setActiveTab("saved")}
-                    
+
                 />
 
-                <div className="tab-content rounded-2xl border-base-300 bg-[#13161d] md:py-6 mt-6 space-y-3">
+
+                <div className="tab-content rounded-2xl border-base-300 bg-[#13161d] md:py-6 py-6 mt-6 space-y-3">
 
                     {addToSave.length > 0 ? (
-                        addToSave.map((saved) => (
+                        sortedSaved.map((saved) => (
                             <SavedCards
                                 key={saved.id}
                                 saved={saved}
@@ -142,6 +161,18 @@ const MyplanPage = () => {
                             </div>
                         </>
                     )}
+                </div>
+                <div className="flex items-center md:ml-74 lg:ml-278 min-[375px]:mt-1 min-[375px]:ml-55 min-[425px]:mt-1 min-[425px]:ml-53  absolute md:static">
+                    <h5 className="hidden min-[425px]:block md:mr-4 mr-2 md:text-[15px] text-sm">Sort by</h5>
+                    <select
+                        value={sortBy}
+                        onChange={(e) => setShortBy(e.target.value as "rating" | "duration" | "calories")}
+                        className="select md:h-10 h-8 md:w-40 w-29 outline-none">
+                        <option disabled={true}>Sort by</option>
+                        <option value={"rating"}>Rating</option>
+                        <option value={"duration"}>Duration</option>
+                        <option value={"calories"}>Calories</option>
+                    </select>
                 </div>
             </div>
         </div>

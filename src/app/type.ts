@@ -11,7 +11,7 @@ export interface workOutdatatype {
     caloriesBurned: number,
     sets: number,
     reps: string,
-    rating: string,
+    rating: number,
     description: string,
     instructions: string[]
 }
