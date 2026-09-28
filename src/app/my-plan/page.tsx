@@ -58,7 +58,7 @@ const MyplanPage = () => {
                                 Exercises
                             </p>
                             <h1 className="font-oswald font-bold text-4xl text-[#c2f800]">
-                                {addToPlan.length}
+                                {activeData.length}
                             </h1>
                         </div>
 
