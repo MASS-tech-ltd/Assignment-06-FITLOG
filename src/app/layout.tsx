@@ -26,9 +26,10 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
+      data-theme="dark"
       className={`${inter.variable} ${oswald.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col font-inter">
+      <body className="min-h-full flex flex-col font-inter bg-[#1C1F27F2]">
         <WorkOutProvider>
           <Navbar></Navbar>
           {children}
